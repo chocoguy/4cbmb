@@ -1,7 +1,7 @@
 <template>
     <Navbar />
-    <div class="home">
-        <p>4cbmb, under construction</p>
+    <div class="anime">
+        <p>Anime Place</p>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar.vue'
 
 
 export default defineComponent({
-    name: "Home",
+    name: "Anime",
     components: { Navbar }
 })
 </script>

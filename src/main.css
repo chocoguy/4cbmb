@@ -1,3 +1,9 @@
+:root {
+    --primary-color: #0088AA;
+    --secondary-color: #FF9955;
+  }
+  
+
 *{
     margin: 0;
     padding: 0;
@@ -6,9 +12,23 @@
 }
 
 html{
-    background: #F4F4F4;
+    background: #EBEBEB;
 }
 
-p{
-    color: red;
+.navbar{
+    background: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.nav-logo{
+    width: 30px;
+    height: 30px;
+}
+
+.nav-link{
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-emphasis: strong;
 }
