@@ -3,6 +3,7 @@
     <div class="anime">
         <h2>Anime & Manga</h2>
         <button style="background-color: aqua;" v-on:click="fetchDataTest()">Fetch Data</button>
+        <button style="background-color: aqua;" v-on:click="fetchPageTest()">Fetch Page</button>
 
         <div  v-for="post in currentPosts" :key="post.no">
             <!-- <p>{{post.sub}}</p>
@@ -47,7 +48,11 @@ export default defineComponent({
     },
     methods: {
         async fetchDataTest() {
-            var posts : Post[] = await AnimeService.GetAnimePage(253202325)
+            var posts : Post[] = await AnimeService.GetAnimeThread(253202325)
+            this.currentPosts = posts
+        },
+        async fetchPageTest() {
+            var posts : Post[] = await AnimeService.GetAnimePage(1)
             this.currentPosts = posts
         },
         handler () {

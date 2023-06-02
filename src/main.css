@@ -33,3 +33,47 @@ html{
     text-emphasis: strong;
 }
 
+
+/*OP Post Section*/
+
+.OP-post-container{
+    border: 5px solid var(--secondary-color);
+    background: #FFFFFF;
+}
+
+.OP-post-text-bubble{
+    background: rgba(255, 153, 85, 0.12);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+
+
+/*Misc*/
+
+.post-text-bubble{
+    background: rgba(0, 136, 170, 0.12);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.orange-text{
+    color: var(--secondary-color);
+}
+
+.blue-text{
+    color: var(--primary-color);
+}
+
+.blue-divider{
+    border-bottom: 2px solid var(--primary-color);
+    margin: 10px;
+}
+

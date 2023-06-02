@@ -3,9 +3,11 @@ export type Post = {
     no : number,
     time : number,
     resto : number,
+    now : string,
     //OP only fields
     replies : number,
     images : number,
+    unique_ips : number,
     //optional fields
     tim : number,
     filename : string,
