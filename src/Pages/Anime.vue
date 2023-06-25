@@ -3,7 +3,22 @@
     <div class="anime">
         <h2>Anime & Manga</h2>
         <button style="background-color: aqua;" v-on:click="fetchDataTest()">Fetch Data</button>
+        <button style="background-color: aqua;" v-on:click="fetchDataTestNew()">Fetch Data New</button>
         <button style="background-color: aqua;" v-on:click="fetchPageTest()">Fetch Page</button>
+
+
+
+        <div v-for="newPost in currentPostsNew" :key="newPost.Id">
+            {{newPost.Title}}
+            <p>Posted: {{newPost.DatePostedString}}</p>
+            <br />
+
+            <div v-if="newPost.ImageUrl != null" >
+
+                <a v-bind:href="newPost.ImageUrl" target="_blank"><img v-lazy="newPost.ThumbnailUrl" alt="img" /></a>
+            </div>
+            <div v-html="newPost.Content"></div>
+        </div>
 
         <div  v-for="post in currentPosts" :key="post.no">
             <!-- <p>{{post.sub}}</p>
@@ -32,6 +47,8 @@ import Navbar from '../components/Navbar.vue'
 import AnimeService  from '../data/AnimeService'
 import router from '@/router'
 import { Post } from '../data/Post.types'
+import { FourCbmbPost } from '@/data/FourCbmbPost.types';
+import FourCbmbService from '@/data/FourCbmbService';
 
 export default defineComponent({
     name: "Anime",
@@ -40,7 +57,8 @@ export default defineComponent({
     },
     data() {
         return {
-            currentPosts: [] as Post[]
+            currentPosts: [] as Post[],
+            currentPostsNew: [] as FourCbmbPost[]
         }
     },
     created(){
@@ -50,6 +68,11 @@ export default defineComponent({
         async fetchDataTest() {
             var posts : Post[] = await AnimeService.GetAnimeThread(253202325)
             this.currentPosts = posts
+        },
+        async fetchDataTestNew() {
+            var newPosts : FourCbmbPost[] = await FourCbmbService.GetThread("a", 254105326)
+            this.currentPostsNew = newPosts
+            console.log(this.currentPostsNew)
         },
         async fetchPageTest() {
             var posts : Post[] = await AnimeService.GetAnimePage(1)

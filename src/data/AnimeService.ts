@@ -2,9 +2,8 @@ import axios from 'axios';
 import { Post } from './Post.types';
 
 const animeClient = axios.create({
-    //have to use proxy to get around CORS
-    baseURL: "https://corsproxy.io/?https://a.4cdn.org/a",
-    //baseURL: "https://a.4cdn.org/a",
+    //Placeholder for Dev
+    baseURL: "http://192.168.0.87/FourCbmb",
     withCredentials: false,
     headers: {
         Accept: "application/json",
@@ -20,7 +19,7 @@ export default {
 
         try{
             var animePosts : Array<Post> = [];
-            var animeThreadJson =  await animeClient.get(`/thread/${threadID}.json`);
+            var animeThreadJson =  await animeClient.get(`/Thread/a/${threadID}`);
             for(var i = 0; i < animeThreadJson.data.posts.length; i++){
                 var post = animeThreadJson.data.posts[i];
                 //static assets must be manually loaded by client
