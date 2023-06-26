@@ -1,42 +1,18 @@
 <template>
     <Navbar />
     <div class="anime">
-        <h2>Anime & Manga</h2>
-        <button style="background-color: aqua;" v-on:click="fetchDataTest()">Fetch Data</button>
-        <button style="background-color: aqua;" v-on:click="fetchDataTestNew()">Fetch Data New</button>
-        <button style="background-color: aqua;" v-on:click="fetchPageTest()">Fetch Page</button>
-
-
-
-        <div v-for="newPost in currentPostsNew" :key="newPost.Id">
-            {{newPost.Title}}
-            <p>Posted: {{newPost.DatePostedString}}</p>
-            <br />
-
-            <div v-if="newPost.ImageUrl != null" >
-
-                <a v-bind:href="newPost.ImageUrl" target="_blank"><img v-lazy="newPost.ThumbnailUrl" alt="img" /></a>
+        <h2 class="orange-text" style="font-weight: bold; text-align: center;">Anime & Manga</h2>
+        <div class="OP-posts-container">
+            <div v-if="OPPosts.length != 0" v-for="post in OPPosts" v-bind:key="post.Id" style="width: 80%;">
+                <OPPost v-bind:post="post" />
             </div>
-            <div v-html="newPost.Content"></div>
+            <div v-else>
+                <p class="orange-text">Loading...</p>
+            </div>
+            <div class="page-selector" v-for="i in 10">
+                <p class="orange-text" v-on:click="NavigateToPage(i)">{{i}}</p>
+            </div>
         </div>
-
-        <div  v-for="post in currentPosts" :key="post.no">
-            <!-- <p>{{post.sub}}</p>
-            <br />
-            <div v-html="post.com"></div>
-            <br /> -->
-
-          
-            <!--no Lazy Loading, limit image to OP only-->
-            <iframe v-if='post.tim != 0'  :width="post.tn_w + 10" :height="post.tn_h + 10" title="img" referrerpolicy="same-origin" :src="post.thumbnail_url"></iframe>
-
-            <!-- <img v-lazy="post.thumbnail_url" alt="img" />
-            <div style="margin-top: 500px; margin-bottom: 500px;"></div> -->
-            </div>
-
-        <!--iframe test-->
-
-
 
     </div>
 </template>
@@ -47,41 +23,38 @@ import Navbar from '../components/Navbar.vue'
 import AnimeService  from '../data/AnimeService'
 import router from '@/router'
 import { Post } from '../data/Post.types'
+import OPPost from '@/Pieces/OPPost.vue';
+import SinglePost from '../components/SinglePost.vue'
 import { FourCbmbPost } from '@/data/FourCbmbPost.types';
 import FourCbmbService from '@/data/FourCbmbService';
+import { FourCbmbPage } from '@/data/FourCbmbPage.types';
 
 export default defineComponent({
     name: "Anime",
     props: {
-
+        page: {
+            type: Number,
+            default: 1
+        }
     },
     data() {
         return {
-            currentPosts: [] as Post[],
-            currentPostsNew: [] as FourCbmbPost[]
+            OPPosts: [] as FourCbmbPost[]
         }
     },
-    created(){
+    async created(){
+        var opPosts : FourCbmbPost[] = await FourCbmbService.GetOPPostsFromPage("a", this.page)
+        this.OPPosts = opPosts
 
     },
     methods: {
-        async fetchDataTest() {
-            var posts : Post[] = await AnimeService.GetAnimeThread(253202325)
-            this.currentPosts = posts
-        },
-        async fetchDataTestNew() {
-            var newPosts : FourCbmbPost[] = await FourCbmbService.GetThread("a", 254105326)
-            this.currentPostsNew = newPosts
-            console.log(this.currentPostsNew)
-        },
-        async fetchPageTest() {
-            var posts : Post[] = await AnimeService.GetAnimePage(1)
-            this.currentPosts = posts
-        },
         handler () {
             console.log('vis')
-        }
+        },
+        NavigateToPage(id: number){
+            router.push("/a/" + id)
+        },
     },
-    components: { Navbar }
+    components: { Navbar, OPPost }
 })
 </script>
