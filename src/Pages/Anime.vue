@@ -9,9 +9,11 @@
             <div v-else>
                 <p class="orange-text">Loading...</p>
             </div>
-            <div class="page-selector" v-for="i in 10">
-                <p class="orange-text" v-on:click="NavigateToPage(i)">{{i}}</p>
-            </div>
+                <div style="display: flex; flex-direction: row; margin-top: 20px; margin-bottom: 20px;">
+                <div class="page-selector" style="margin-left: 10px;" v-for="i in 10">
+                    <p class="orange-text" style="cursor: pointer; text-decoration: underline;" v-on:click="NavigateToPage(i)">{{ i }}</p>
+                </div>
+                </div>
         </div>
 
     </div>
@@ -31,25 +33,26 @@ import { FourCbmbPage } from '@/data/FourCbmbPage.types';
 
 export default defineComponent({
     name: "Anime",
-    props: {
-        page: {
-            type: Number,
-            default: 1
-        }
-    },
+    props: ['page'],
     data() {
         return {
             OPPosts: [] as FourCbmbPost[]
         }
     },
-    async created(){
-        var opPosts : FourCbmbPost[] = await FourCbmbService.GetOPPostsFromPage("a", this.page)
-        this.OPPosts = opPosts
-
-    },
+   created() {
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        this.getNewPosts()
+      }
+    )
+  },
     methods: {
-        handler () {
-            console.log('vis')
+        async getNewPosts () {
+            this.OPPosts = []
+            var opPosts : FourCbmbPost[] = await FourCbmbService.GetOPPostsFromPage("a", this.page)
+            console.log("Page: " + this.page)
+            this.OPPosts = opPosts
         },
         NavigateToPage(id: number){
             router.push("/a/" + id)

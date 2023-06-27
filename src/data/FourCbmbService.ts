@@ -95,7 +95,7 @@ export default {
         }
     },
 
-    async GetOPPostsFromPage(board: string, page: number) : Promise<FourCbmbPost[]>{
+    async GetOPPostsFromPage(board: string, page: string) : Promise<FourCbmbPost[]>{
         try{
             var fourCbmbPosts : Array<FourCbmbPost> = [];
             var fourCbmbPageJson =  await fourCbmbClient.get(`/Page/${board}/${page}`);

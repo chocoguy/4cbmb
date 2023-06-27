@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-top: 40px; margin-bottom: 40px;">
         <div style="display: flex; flex-direction: row; justify-content: space-between">
             <p class="orange-text">{{post?.Title}}</p>
             <p class="orange-text">{{post?.DatePostedString}}</p>
@@ -12,12 +12,14 @@
             <a v-bind:href="post?.ImageUrl" target="_blank"><img v-lazy="post?.ThumbnailUrl" alt="img" /></a>
             </div>
             <div class="blue-divider" />
-            <div style="display: flex;">
+            <div style="display: flex; flex-direction: row; margin: 10px;">
                 <i class="fa-solid fa-comments"></i>
-                <p class="blue-text">{{post?.Replies}}</p>
-                <i class="fa-solid fa-image"></i>
-                <p class="blue-text">{{post?.ImageReplies}}</p>
-                <strong class="orange-text">{{"#" + post?.Id}}</strong>
+                <p class="blue-text" style="margin-left: 5px;">{{post?.Replies}}</p>
+                <i class="fa-solid fa-image" style="margin-left: 5px;"></i>
+                <p class="blue-text" style="margin-left: 5px;">{{post?.ImageReplies}}</p>
+                <div style="margin-left: auto;">
+                <p class="orange-text" style="align-self: flex-end;">{{"#" + post?.Id}}</p>
+                </div>
             </div>
 
         </div>
