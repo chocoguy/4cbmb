@@ -6,7 +6,10 @@
         </div>
         <div class="OP-post-container">
             <div style="display: flex; flex-direction: row;">
-            <div class="OP-post-text-bubble">
+            <!--v-on:click="NavigateTo(`/a/thread/${post?.Id}`)
+            Could use this here. But im going to be too trigger happy with this and accidentally click on it
+            -->
+            <div class="OP-post-text-bubble" style="cursor: pointer;">
                 <div v-html="post?.Content"></div>
             </div>
             <a v-bind:href="post?.ImageUrl" target="_blank"><img v-lazy="post?.ThumbnailUrl" alt="img" /></a>
@@ -18,7 +21,7 @@
                 <i class="fa-solid fa-image" style="margin-left: 5px;"></i>
                 <p class="blue-text" style="margin-left: 5px;">{{post?.ImageReplies}}</p>
                 <div style="margin-left: auto;">
-                <p class="orange-text" style="align-self: flex-end;">{{"#" + post?.Id}}</p>
+                <p class="orange-text" style="align-self: flex-end; cursor: pointer;" v-on:click="NavigateTo(`/a/thread/${post?.Id}`)">{{"#" + post?.Id}}</p>
                 </div>
             </div>
 

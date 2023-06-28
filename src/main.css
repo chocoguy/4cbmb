@@ -58,6 +58,17 @@ html{
 }
 
 
+/*Thread Section*/
+
+.thread-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid var(--primary-color);
+    background: #FFFFFF;
+}
+
 
 /*Misc*/
 
@@ -67,6 +78,7 @@ html{
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+    width: 100%;
 }
 
 
@@ -80,6 +92,11 @@ html{
 
 .blue-divider{
     border-bottom: 2px solid var(--primary-color);
+    margin: 10px;
+}
+
+.gray-divider{
+    border-bottom: 2px solid #EBEBEB;
     margin: 10px;
 }
 

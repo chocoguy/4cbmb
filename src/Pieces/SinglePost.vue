@@ -1,27 +1,39 @@
 <template>
-    <div>
+    <div v-if="isOP">
         <div style="display: flex; flex-direction: row; justify-content: space-between">
-            <p class="orange-text">{{post?.sub}}</p>
-            <p class="orange-text">{{post?.now}}</p>
+            <p class="orange-text" v-bind:id="postId">{{post?.Id}}</p>
+            <p class="orange-text">{{post?.DatePostedString}}</p>
         </div>
-        <div class="OP-post-container">
-            <div class="OP-post-text-bubble">
-                <div v-html="post?.com"></div>
+            <div class="">
+                <div style="display: flex; flex-direction: row-reverse;">
+                <div class="OP-post-text-bubble">
+                    <div v-html="post?.Content"></div>
+                </div>
+                <a v-bind:href="post?.ImageUrl" target="_blank"><img v-lazy="post?.ThumbnailUrl" alt="img" /></a>
+                </div>
+                <div class="gray-divider" />
             </div>
-            <iframe :width="post ? post.tn_w + 10 : 100" :height="post ? post.tn_h + 10 : 100" title="img" referrerpolicy="same-origin" :src="post?.thumbnail_url"></iframe>
-            <div class="blue-divider" />
-            <div style="display: flex;">
-                <i class="fa-solid fa-comments"></i>
-                <p class="blue-text">{{post?.replies}}</p>
-                <i class="fa-solid fa-image"></i>
-                <p class="blue-text">{{post?.images}}</p>
-                <i class="fa-solid fa-users"></i>
-                <p class="blue-text">{{post?.unique_ips}}</p>
-                <small class="orange-text">{{post?.filename}}</small>
-                <strong class="orange-text">{{"#" + post?.no}}</strong>
-            </div>
-
+    </div>
+    <div v-else>
+        <div style="display: flex; flex-direction: row; justify-content: space-between">
+            <p class="blue-text" v-bind:id="postId">{{post?.Id}}</p>
+            <p class="blue-text">{{post?.DatePostedString}}</p>
+            <button class="blue-text" v-on:click="expandImage = !expandImage">{{expandImage ? "Collapse" : "Expand"}}</button> <!-- TODO: Make this a toggle button -->
         </div>
+            <div class="">
+                <div style="display: flex; flex-direction: row;">
+                <div class="post-text-bubble">
+                    <div v-html="post?.Content"></div>
+                </div>
+                <a v-bind:href="post?.ImageUrl" target="_blank"><img v-lazy="post?.ThumbnailUrl" alt="img" /></a>
+                </div>
+                <div class="gray-divider" />
+                <!--expand image test
+                Further develop this
+                why use iframes? because CORS prevents me from loading the image directly
+                -->
+                <iframe v-if="expandImage" :width="post?.ImageWidth" :height="post?.ImageHeight" title="img" referrerpolicy="same-origin" :src="post?.ImageUrl"></iframe>
+            </div>
     </div>
 </template>
 
@@ -29,19 +41,22 @@
     import { defineComponent } from 'vue';
     import { Post } from '../data/Post.types';
     import router from '@/router';
+    import { FourCbmbPost } from '@/data/FourCbmbPost.types';
 
     export default defineComponent({
         name: "SinglePost",
         props: {
-            post: Object as () => Post,
-            isOPPost: Boolean
+            post: Object as () => FourCbmbPost,
+            isOP: Boolean,
         },
         created() {
-            
+            console.log(this.isOP)
+            this.postId = this.post?.Id == null ? "" : "p" + this.post?.Id.toString()
         },
         data() {
             return {
-                
+                postId: "",
+                expandImage: false
             }
         },
         methods: {
