@@ -69,6 +69,11 @@ html{
     background: #FFFFFF;
 }
 
+/*Transition*/
+
+.fade-image-in{
+    animation: fadein 1s;
+}
 
 /*Misc*/
 
@@ -100,3 +105,7 @@ html{
     margin: 10px;
 }
 
+.responsive-img{
+    max-width: 100%;
+    height: auto;
+}

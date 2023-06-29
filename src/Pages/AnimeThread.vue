@@ -2,7 +2,7 @@
     <Navbar />
     <div class="anime">
         <h2 class="orange-text" style="font-weight: bold; text-align: center;">{{threadTitle}}</h2>
-        <div class="thread-container" style="margin-left: 50px; margin-right: 50px;">
+        <div class="thread-container" style="margin: 50px">
             <div style="display: flex; flex-direction: row; margin: 10px;">
                 <i class="fa-solid fa-comments"></i>
                 <p class="blue-text" style="margin-left: 5px;">{{replies}}</p>
