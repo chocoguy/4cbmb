@@ -4,7 +4,9 @@ import Home from '../Pages/Home.vue'
 import Anime from '../Pages/Anime.vue'
 import AnimeThread from '../Pages/AnimeThread.vue'
 import Auto from '../Pages/Auto.vue'
+import AutoThread from '../Pages/AutoThread.vue'
 import Paranormal from '../Pages/Paranormal.vue'
+import ParanormalThread from '../Pages/ParanormalThread.vue'
 import Notfound from '../Pages/Notfound.vue'
 
 const routes = [
@@ -26,13 +28,27 @@ const routes = [
     component: Anime
   },
   {
-    path: "/o",
+    path: "/o/thread/:id",
+    name: "AutoThread",
+    props: true,
+    component: AutoThread
+  },
+  {
+    path: "/o/:page",
     name: "Auto",
+    props: true,
     component: Auto
   },
   {
-    path: "/x",
+    path: "/x/thread/:id",
+    name: "ParanormalThread",
+    props: true,
+    component: ParanormalThread
+  },
+  {
+    path: "/x/:page",
     name: "Paranormal",
+    props: true,
     component: Paranormal
   },
   {

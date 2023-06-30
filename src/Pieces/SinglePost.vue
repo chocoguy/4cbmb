@@ -1,12 +1,12 @@
 <template>
     <div v-if="isOP">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+        <div class="OP-posts-metadata">
             <p class="orange-text" v-bind:id="postId">#{{post?.Id}}</p>
             <a v-bind:href="post?.ImageUrl" target="_blank" v-if="post?.ImageName != null" v-bind:title="post?.ImageName"  class="orange-text" >{{post?.ImageName.length > 70 ? post?.ImageName.slice(0, 70) + "(...)" : post?.ImageName}}.{{post?.ImageUrl != null ? post?.ImageUrl.split('.').pop() : ""}}</a>
             <p class="orange-text">{{post?.DatePostedString}}</p>
         </div>
             <div class="">
-                <div style="display: flex; flex-direction: row-reverse;">
+                <div class="posts-content-container-OP">
                 <div class="OP-post-text-bubble">
                     <div v-html="post?.Content"></div>
                 </div>
@@ -27,13 +27,13 @@
             </div>
     </div>
     <div v-else>
-        <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+        <div class="OP-posts-metadata">
             <p class="blue-text" v-bind:id="postId">#{{post?.Id}}</p>
             <a v-bind:href="post?.ImageUrl" target="_blank" v-if="post?.ImageName != null" v-bind:title="post?.ImageName"  class="blue-text" >{{post?.ImageName.length > 70 ? post?.ImageName.slice(0, 70) + "(...)" : post?.ImageName}}.{{post?.ImageUrl != null ? post?.ImageUrl.split('.').pop() : ""}}</a>
             <p class="blue-text">{{post?.DatePostedString}}</p>
         </div>
             <div class="">
-                <div style="display: flex; flex-direction: row;">
+                <div class="OP-posts-content-container">
                 <div class="post-text-bubble">
                     <div v-html="post?.Content"></div>
                 </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div v-if="expandImage && post?.ImageUrl.endsWith('.webm')" style="margin: 10px" >
                     <p v-on:click="expandImage = !expandImage" style="cursor: pointer;" class="blue-text">[close]</p>
-                    <video class="fade-image-in responsive-img" controls autoplay loop muted>
+                    <video class="fade-image-in responsive-img" referrerpolicy="same-origin" controls autoplay loop muted>
                         <source :src="post?.ImageUrl" type="video/webm">
                     </video>
                 </div>
@@ -70,7 +70,7 @@
             isOP: Boolean,
         },
         created() {
-            console.log(this.isOP)
+            //console.log(this.isOP)
             this.postId = this.post?.Id == null ? "" : "p" + this.post?.Id.toString()
         },
         data() {

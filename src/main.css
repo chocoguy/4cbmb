@@ -19,7 +19,7 @@ html{
     background: var(--primary-color);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .nav-logo{
@@ -30,7 +30,9 @@ html{
 .nav-link{
     color: #FFFFFF;
     text-decoration: underline;
-    text-emphasis: strong;
+    margin-left: 20px;
+    font-size: 21px;
+    font-weight: bold;
 }
 
 
@@ -57,6 +59,18 @@ html{
     justify-content: center;
 }
 
+.OP-posts-metadata{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.OP-posts-content-container{
+    display: flex;
+    flex-direction: row;
+}
+
 
 /*Thread Section*/
 
@@ -67,6 +81,12 @@ html{
     justify-content: center;
     border: 5px solid var(--primary-color);
     background: #FFFFFF;
+    margin: 50px;
+}
+
+.posts-content-container-OP{
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 /*Transition*/
@@ -108,4 +128,38 @@ html{
 .responsive-img{
     max-width: 100%;
     height: auto;
+}
+
+.container-width{
+    width: 80%;
+}
+
+
+/*Mobile*/
+
+@media only screen and (max-width: 600px) {
+    .nav-link{
+        font-size: 16px;
+    }
+
+    .OP-posts-metadata{
+        flex-direction: column;
+    }
+
+    .OP-posts-content-container{
+        flex-direction: column;
+    }
+
+    .container-width{
+        width: 100%;
+    }
+
+    .thread-container{
+        margin: 5px;
+    }
+
+    .posts-content-container-OP{
+        flex-direction: column;
+    }
+
 }

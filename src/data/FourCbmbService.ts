@@ -18,7 +18,7 @@ export default {
             var fourCbmbThreadJson =  await fourCbmbClient.get(`/Thread/${board}/${threadID}`);
             for(var i = 0; i < fourCbmbThreadJson.data.length; i++){
                 var post = fourCbmbThreadJson.data[i];
-                console.log(post);
+                //console.log(post);
                 var newPost : FourCbmbPost = {
                     Id : post.id,
                     IdRepliedTo : post.idRepliedTo,
@@ -42,7 +42,7 @@ export default {
                 }
                 fourCbmbPosts.push(newPost);
             }
-            console.log(fourCbmbThreadJson)
+            //console.log(fourCbmbThreadJson)
             return fourCbmbPosts;
         }
         catch(error){

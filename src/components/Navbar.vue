@@ -1,11 +1,11 @@
 <template>
     <div class="MainHeader">
         <nav class="navbar">
-            <img src="../Resources/4cbmblogo.png" alt="4cbmb logo" class="nav-logo" v-on:click="NavigateTo('/')" />
-                <a href="#" class="nav-link" v-on:click="NavigateTo('/a/1')">/a</a>
-                <a href="#" class="nav-link" v-on:click="NavigateTo('/o')">/o</a>
-                <a href="#" class="nav-link" v-on:click="NavigateTo('/x')">/x</a>
-            <h3 style="text-emphasis: strong;">4cbmb</h3>
+            <a href="/"><img src="../Resources/4cbmblogo.png" style="margin-top: 5px; margin-left: 5px;" alt="4cbmb logo" class="nav-logo" /></a>
+                <a href="/a/1" class="nav-link">/a</a>
+                <a href="/o/1" class="nav-link">/o</a>
+                <a href="/x/1" class="nav-link">/x</a>
+            <h3 style="font-weight: bold; color: white; margin-left: auto; font-size: 21px; margin-right: 5px;">4cbmb</h3>
         </nav>
     </div>
 </template>

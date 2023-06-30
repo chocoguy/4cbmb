@@ -55,7 +55,7 @@ export default {
                 animePosts.push(newPost);
             }
             //console.log(animeThreadJson.data.threads[0].posts[0].com);
-            console.log(animeThreadJson)
+            //console.log(animeThreadJson)
             return animePosts;
         }
         catch(e){
@@ -69,7 +69,6 @@ export default {
         try{
             var OPAnimePosts : Array<Post> = [];
             var animePageJson =  await animeClient.get(`/${pageNum}.json`);
-            console.log(animePageJson);
             for(var i = 0; i < animePageJson.data.threads.length; i++){
                 var OPPost = animePageJson.data.threads[i].posts[0];
                 var image_url = "https://i.4cdn.org/a/" + OPPost.tim + OPPost.ext;

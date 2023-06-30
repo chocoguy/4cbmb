@@ -1,17 +1,17 @@
 <template>
     <Navbar />
     <div class="anime">
-        <h2 class="orange-text" style="font-weight: bold; text-align: center;">Anime & Manga</h2>
+        <h2 class="orange-text" style="font-weight: bold; text-align: center; margin: 10px;">Anime & Manga</h2>
         <div class="OP-posts-container">
-            <div v-if="OPPosts.length != 0" v-for="post in OPPosts" v-bind:key="post.Id" style="width: 80%;">
-                <OPPost v-bind:post="post" />
+            <div v-if="OPPosts.length != 0" v-for="post in OPPosts" v-bind:key="post.Id" class="container-width">
+                <OPPost v-bind:post="post" v-bind:board="'a'" />
             </div>
             <div v-else>
                 <p class="orange-text">Loading...</p>
             </div>
                 <div style="display: flex; flex-direction: row; margin-top: 20px; margin-bottom: 20px;">
                 <div class="page-selector" style="margin-left: 10px;" v-for="i in 10">
-                    <p class="orange-text" style="cursor: pointer; text-decoration: underline;" v-on:click="NavigateToPage(i)">{{ i }}</p>
+                    <a v-bind:href="'/a/' + i" class="orange-text" style="cursor: pointer; text-decoration: underline;">{{ i }}</a>
                 </div>
                 </div>
         </div>
@@ -40,18 +40,19 @@ export default defineComponent({
         }
     },
    created() {
-    this.$watch(
-      () => this.$route.params,
-      (toParams, previousParams) => {
-        this.getNewPosts()
-      }
-    )
+    this.getNewPosts()
+    // this.$watch(
+    //   () => this.$route.params,
+    //   (toParams, previousParams) => {
+    //     this.getNewPosts()
+    //   }
+    // )
   },
     methods: {
         async getNewPosts () {
             this.OPPosts = []
             var opPosts : FourCbmbPost[] = await FourCbmbService.GetOPPostsFromPage("a", this.page)
-            console.log("Page: " + this.page)
+            //console.log("Page: " + this.page)
             this.OPPosts = opPosts
         },
         NavigateToPage(id: number){

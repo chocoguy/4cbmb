@@ -1,6 +1,6 @@
 <template>
     <Navbar />
-    <div class="anime">
+    <div class="paranormal">
         <h2 class="orange-text" style="font-weight: bold; text-align: center; margin: 10px;">{{threadTitle}}</h2>
         <div class="thread-container" >
             <div style="display: flex; flex-direction: row; margin: 10px;">
@@ -17,7 +17,7 @@
             </div>
             <div style="display: flex; flex-direction: row; margin-top: 20px; margin-bottom: 20px;">
                 <div class="page-selector" style="margin-left: 10px;" v-for="i in 10">
-                    <a v-bind:href="'/a/' + i" class="orange-text" style="cursor: pointer; text-decoration: underline;">{{ i }}</a>
+                    <a v-bind:href="'/x/' + i" class="orange-text" style="cursor: pointer; text-decoration: underline;">{{ i }}</a>
                 </div>
                 </div>
         </div>
@@ -33,7 +33,7 @@ import SinglePost from '../Pieces/SinglePost.vue';
 import router from '@/router';
 
 export default defineComponent({
-    name: "AnimeThread",
+    name: "ParanormalThread",
     props: ['id'],
     data() {
         return {
@@ -50,7 +50,7 @@ export default defineComponent({
     },
     methods: {
         async getPost () {
-            var newPosts : FourCbmbPost[] = await FourCbmbService.GetThread("a", this.id)
+            var newPosts : FourCbmbPost[] = await FourCbmbService.GetThread("x", this.id)
             //console.log("Count: " + newPosts.length)
             this.posts = newPosts
             this.threadTitle = newPosts[0].Title
@@ -58,7 +58,7 @@ export default defineComponent({
             this.imageReplies = newPosts[0].ImageReplies
         },
         NavigateToPage(id: number){
-            router.push("/a/" + id)
+            router.push("/x/" + id)
         },
     },
     components: { Navbar, SinglePost }
