@@ -4,6 +4,7 @@
 
 **Currently on version: 0.1 ALPHA**
 
+[4cbmb](4cbmb.decahex.net)
 an unofficial frontend for 4channel.
 
 
@@ -17,8 +18,6 @@ an unofficial frontend for 4channel.
 - Proper spoiler handling
 - Eliminate backend dependency if possible
 - Native application, This is currently on hold. I'm not sure how feasiable it is considering that the web app works fine
-
-
 
 
 ## Updates
@@ -38,3 +37,7 @@ MVP mostly built. need to tie loose ends and add mobile responsiveness
 
 ### update 6/30/2023
 MVP Done. it's time to publish this thing.
+
+### update 7/4/2023
+[4cbmb](4cbmb.decahex.net)
+Site is live. Don't expect perfection this is just the 1st release.
