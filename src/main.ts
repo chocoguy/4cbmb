@@ -7,6 +7,8 @@ import "./main.css"
 
 
 const app = createApp(App)
-app.use(VueLazyload)
+app.use(VueLazyload, {
+    lazyComponent: true,
+})
 app.use(router)
 app.mount('#app')

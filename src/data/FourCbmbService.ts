@@ -3,8 +3,8 @@ import { FourCbmbPost } from './FourCbmbPost.types';
 import { FourCbmbPage } from './FourCbmbPage.types';
 
 const fourCbmbClient = axios.create({
-    //Placeholder
-    baseURL: "https://api.decahex.net/FourCbmb",
+    //Placeholder https://api.decahex.net/FourCbmb
+    baseURL: "https://localhost:7285/FourCbmb/",
     withCredentials: false,
     headers: {
         Accept: "application/json",

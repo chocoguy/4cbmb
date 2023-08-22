@@ -13,8 +13,12 @@
             <div class="OP-post-text-bubble">
                 <div v-html="post?.Content"></div>
             </div>
-            <div v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px" v-if="expandImage == false && post?.ImageUrl != null">
-                    <img v-lazy="post?.ThumbnailUrl" alt="img" />
+            <div v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px" v-if="expandImage == false && post?.ImageUrl != null">   
+                <!-- <iframe :width="post ? post.ThumbnailImageWidth + 10 : 100" :height="post ? post.ThumbnailImageHeight + 10 : 100" title="img2" referrerpolicy="same-origin" :src="post?.ThumbnailUrl"></iframe>                 -->
+                     <!-- <img :src="post?.ThumbnailUrl" referrerpolicy="same-origin"  alt="img" />  -->
+                     <lazy-component>
+                        <img :src="post?.ThumbnailUrl" referrerpolicy="same-origin" alt="img" /> 
+                     </lazy-component>
                 </div>
             </div>
             <div v-if="expandImage && !post?.ImageUrl.endsWith('.webm')" v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px;">
@@ -34,6 +38,7 @@
                 <p class="blue-text" style="margin-left: 5px;">{{post?.ImageReplies}}</p>
                 <div style="margin-left: auto;">
                 <a v-bind:href="'/' + board + '/thread/' + post?.Id" class="orange-text" style="align-self: flex-end; cursor: pointer; text-decoration: underline;">{{"#" + post?.Id}}</a>
+                <a v-bind:href="'https://boards.4channel.org/' + board + '/thread/' + post?.Id" target="_blank" class="orange-text" style="align-self: flex-end; cursor: pointer; text-decoration: underline;">[4channel]</a>
                 </div>
             </div>
 

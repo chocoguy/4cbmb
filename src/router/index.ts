@@ -7,6 +7,12 @@ import Auto from '../Pages/Auto.vue'
 import AutoThread from '../Pages/AutoThread.vue'
 import Paranormal from '../Pages/Paranormal.vue'
 import ParanormalThread from '../Pages/ParanormalThread.vue'
+import Travel from '../Pages/Travel.vue'
+import TravelThread from '../Pages/TravelThread.vue'
+import Fashion from '../Pages/Fashion.vue'
+import FashionThread from '../Pages/FashionThread.vue'
+import Business from '../Pages/Business.vue'
+import BusinessThread from '../Pages/BusinessThread.vue'
 import Notfound from '../Pages/Notfound.vue'
 
 const routes = [
@@ -50,6 +56,42 @@ const routes = [
     name: "Paranormal",
     props: true,
     component: Paranormal
+  },
+  {
+    path: "/trv/thread/:id",
+    name: "TravelThread",
+    props: true,
+    component: TravelThread
+  },
+  {
+    path: "/trv/:page",
+    name: "Travel",
+    props: true,
+    component: Travel
+  },
+  {
+    path: "/fa/thread/:id",
+    name: "FashionThread",
+    props: true,
+    component: FashionThread
+  },
+  {
+    path: "/fa/:page",
+    name: "Fashion",
+    props: true,
+    component: Fashion
+  },
+  {
+    path: "/biz/thread/:id",
+    name: "BusinessThread",
+    props: true,
+    component: BusinessThread
+  },
+  {
+    path: "/biz/:page",
+    name: "Business",
+    props: true,
+    component: Business
   },
   {
     //implement later

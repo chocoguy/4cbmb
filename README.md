@@ -1,5 +1,5 @@
 # 4cbmb
-## 4chanel But Make it Better
+## 4channel But Make it Better
 ---
 
 **Currently on version: 0.1 ALPHA**
@@ -18,6 +18,7 @@ an unofficial frontend for 4channel.
 - Proper spoiler handling
 - Eliminate backend dependency if possible
 - Native application, This is currently on hold. I'm not sure how feasiable it is considering that the web app works fine
+- Open in 4channel link
 
 
 ## Updates
@@ -41,3 +42,7 @@ MVP Done. it's time to publish this thing.
 ### update 7/4/2023
 [4cbmb](4cbmb.decahex.net)
 Site is live. Don't expect perfection this is just the 1st release.
+
+### update 8/21/2023
+Turns out the lazy loader I had was causing all those CORS issues
+I loathe web development more everyday, glad I decided to learn native technologies.

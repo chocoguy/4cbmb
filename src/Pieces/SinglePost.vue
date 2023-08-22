@@ -11,13 +11,15 @@
                     <div v-html="post?.Content"></div>
                 </div>
                 <div v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px" v-if="expandImage == false && post?.ImageUrl != null">
-                    <img v-lazy="post?.ThumbnailUrl" alt="img" />
+                    <lazy-component>
+                        <img :src="post?.ThumbnailUrl" referrerpolicy="same-origin" alt="img" /> 
+                     </lazy-component>
                 </div>
                 </div>
-                <div v-if="expandImage && !post?.ImageUrl.endsWith('.webm')" v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px;">
+                <div v-if="expandImage && !post?.ImageUrl.includes('webm')" v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px;">
                 <img class="fade-image-in responsive-img"  referrerpolicy="same-origin" :src="post?.ImageUrl" alt="img" />
                 </div>
-                <div v-if="expandImage && post?.ImageUrl.endsWith('.webm')" style="margin: 10px" >
+                <div v-if="expandImage && post?.ImageUrl.includes('webm')" style="margin: 10px" >
                     <p v-on:click="expandImage = !expandImage" style="cursor: pointer;" class="orange-text">[close]</p>
                     <video class="fade-image-in responsive-img" controls autoplay loop muted>
                         <source :src="post?.ImageUrl" type="video/webm">
@@ -38,7 +40,9 @@
                     <div v-html="post?.Content"></div>
                 </div>
                 <div v-on:click="expandImage = !expandImage" style="cursor: pointer; margin: 10px" v-if="expandImage == false && post?.ImageUrl != null">
-                    <img v-lazy="post?.ThumbnailUrl" alt="img" />
+                    <lazy-component>
+                        <img :src="post?.ThumbnailUrl" referrerpolicy="same-origin" alt="img" /> 
+                     </lazy-component>
                 </div>
                 </div>
                 <!--? I guess iframes are no longer neccesary <iframe class="fade-image-in" v-if="expandImage" :width="post?.ImageWidth" :height="post?.ImageHeight" title="img" referrerpolicy="same-origin" :src="post?.ImageUrl"></iframe> -->
