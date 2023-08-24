@@ -8,7 +8,7 @@
                 <a href="/trv/1" class="nav-link">/trv</a>
                 <a href="/fa/1" class="nav-link">/fa</a>
                 <a href="/biz/1" class="nav-link">/biz</a>
-            <h3 style="font-weight: bold; color: white; margin-left: auto; font-size: 21px; margin-right: 5px;">4cbmb</h3>
+            <h3 style="font-weight: bold; color: white; margin-left: auto; font-size: 21px; margin-right: 5px;">4cbmb v1.0</h3>
         </nav>
     </div>
 </template>
